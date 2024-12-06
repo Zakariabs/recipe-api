@@ -1,8 +1,8 @@
+// src/db.js
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const db = new sqlite3.Database(path.join(__dirname, '../recipe.db'));
+const db = new sqlite3.Database(path.join(__dirname, '../moroccan-recipes.db'));
 
-// Create tables
 db.serialize(() => {
   // Categories table
   db.run(`CREATE TABLE IF NOT EXISTS categories (
@@ -17,6 +17,7 @@ db.serialize(() => {
     title TEXT NOT NULL,
     ingredients TEXT NOT NULL,
     instructions TEXT NOT NULL,
+    cooking_time INTEGER,
     category_id INTEGER,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories (id)

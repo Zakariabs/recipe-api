@@ -28,4 +28,22 @@ router.post('/', validateCategory, (req, res) => {
   );
 });
 
+// Get single category
+router.get('/:id', (req, res) => {
+    db.get('SELECT * FROM categories WHERE id = ?', [req.params.id], (err, row) => {
+      if (err) return res.status(500).json({ error: err.message });
+      if (!row) return res.status(404).json({ error: 'Category not found' });
+      res.json(row);
+    });
+  });
+  
+  // Delete category
+  router.delete('/:id', (req, res) => {
+    db.run('DELETE FROM categories WHERE id = ?', [req.params.id], function(err) {
+      if (err) return res.status(500).json({ error: err.message });
+      if (this.changes === 0) return res.status(404).json({ error: 'Category not found' });
+      res.json({ message: 'Category deleted' });
+    });
+  });
+
 module.exports = router;

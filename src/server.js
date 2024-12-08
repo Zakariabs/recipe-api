@@ -5,13 +5,17 @@ require('./db');
 const app = express();
 const port = 3000;
 
+// Middleware
 app.use(express.json());
-// Add to server.js
-app.use('/api/categories', require('./routes/category'));
-// Basic test route
+
+// Serve documentation at root
 app.get('/', (req, res) => {
-    res.send('Moroccan Recipes API');
+    res.sendFile(path.join(__dirname, '../index.html'));
 });
+
+// Routes
+app.use('/api/categories', require('./routes/category'));
+app.use('/api/recipes', require('./routes/recipe'));
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);

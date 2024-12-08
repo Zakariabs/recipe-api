@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moroccan Recipes API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Moroccan Recipes API Documentation</h1>
+
+    <h2>Categories</h2>
+    <div class="endpoint">
+        <h3>GET /api/categories</h3>
+        <p>Get all categories with pagination</p>
+        <p>Query parameters:</p>
+        <ul>
+            <li><code>limit</code> - Number of items per page (default: 10)</li>
+            <li><code>offset</code> - Number of items to skip (default: 0)</li>
+        </ul>
+    </div>
+
+    <div class="endpoint">
+        <h3>GET /api/categories/:id</h3>
+        <p>Get a single category by ID</p>
+    </div>
+
+    <div class="endpoint">
+        <h3>POST /api/categories</h3>
+        <p>Create a new category</p>
+        <p>Body:</p>
+        <pre><code>{
+    "name": "Tagines",
+    "description": "Traditional Moroccan stews"
+}</code></pre>
+    </div>
+
+    <h2>Recipes</h2>
+    <div class="endpoint">
+        <h3>GET /api/recipes</h3>
+        <p>Get all recipes with pagination</p>
+        <p>Query parameters:</p>
+        <ul>
+            <li><code>limit</code> - Number of items per page (default: 10)</li>
+            <li><code>offset</code> - Number of items to skip (default: 0)</li>
+        </ul>
+    </div>
+
+    <div class="endpoint">
+        <h3>GET /api/recipes/search</h3>
+        <p>Search recipes by title</p>
+        <p>Query parameters:</p>
+        <ul>
+            <li><code>title</code> - Search term for recipe title</li>
+        </ul>
+    </div>
+
+    <div class="endpoint">
+        <h3>POST /api/recipes</h3>
+        <p>Create a new recipe</p>
+        <p>Body:</p>
+        <pre><code>{
+    "title": "Chicken Tagine",
+    "ingredients": ["chicken", "preserved lemon", "olives"],
+    "instructions": "1. Brown chicken...",
+    "cooking_time": 60,
+    "category_id": 1
+}</code></pre>
+    </div>
+</body>
+</html>
